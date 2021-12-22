@@ -1,11 +1,9 @@
-import { Button } from "./components/Button";
+import { Home } from "./pages/Home";
 
 function App() {
   return (
     <>
-      <h1>HELOOOO</h1>
-      <Button  />
-      <Button  />
+      <Home />
     </>
   );
 }
