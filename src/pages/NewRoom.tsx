@@ -1,17 +1,15 @@
-import { FormEvent, useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { AppContext } from '../App';
 
 import illustrationImg from '../assets/img/illustration.svg'
 import logoImg from '../assets/img/logo.svg';
 
 import { Button } from '../components/Button';
+import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
 
 export function NewRoom() {
-  const { value, setValue} = useContext(AppContext)
-  const [newRoom, setNewRoom] = useState('');
+  const { user } = useAuth()
 
   return (
     <div id="page-auth">
@@ -23,15 +21,12 @@ export function NewRoom() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
-          <h1>{value}</h1>
+          <h1>{user?.username}</h1>
           <h2>Criar uma nova sala</h2>
           <form>
             <input 
               type="text"
-              placeholder="Nome da sala"
-              onChange={event => setNewRoom(event.target.value)}
-              value={newRoom}
-            />
+              placeholder="Nome da sala" />
             <Button type="submit">
               Criar sala
             </Button>

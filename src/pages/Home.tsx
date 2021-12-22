@@ -1,37 +1,32 @@
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 
-import { auth, firebase } from '../services/firebase'
+import illustrationImg from '../assets/img/illustration.svg';
+import logoImg from '../assets/img/logo.svg';
+import googleIconImg from '../assets/img/google-icon.svg';
+
+import { Button } from '../components/Button';
+import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
-import { Button } from "../components/Button";
-
-import illustrationImg from "../assets/img/illustration.svg";
-import logoImg from "../assets/img/logo.svg";
-import googleIconImg from "../assets/img/google-icon.svg";
-import { useContext } from "react";
-import { AppContext } from "../App";
 
 export function Home() {
-  const { value, setValue} = useContext(AppContext)
-
   const history = useHistory();
+  const { user, signInWithGoogle } = useAuth()
 
-  function handleCreateNewRoom(){
-    const provider = new firebase.auth.GoogleAuthProvider()
-
-    auth.signInWithPopup(provider).then(res => {
-      console.log(res)
-    })
+  async function handleCreateNewRoom(){
+    if(!user){
+      await signInWithGoogle()
+    }
 
     history.push('/rooms/new')
   }
 
   return (
-    <div id='page-auth' >
+    <div id='page-auth'>
       <aside>
         <img
           src={illustrationImg}
-          alt="Ilustração simbolizando perguntas e respostas"
+          alt='Ilustração simbolizando perguntas e respostas'
         />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
@@ -39,22 +34,20 @@ export function Home() {
 
       <main>
         <div className='main-content'>
-          <img src={logoImg} alt="LetMeAsk" />
-          <h1>{value}</h1>
-          <button onClick={handleCreateNewRoom} className="create-room">
-            <img src={googleIconImg} alt="Logo do Google" />
+          <img src={logoImg} alt='LetMeAsk' />
+          <button onClick={handleCreateNewRoom} className='create-room'>
+            <img src={googleIconImg} alt='Logo do Google' />
             Crie sua sala com o Google
           </button>
-          <div className="separator">ou entre em uma sala</div>
+          <div className='separator'>ou entre em uma sala</div>
           <form>
             <input 
-              type="text"
-              placeholder="Digite o código da sala"
+              type='text' placeholder='Digite o código da sala'
             />
-            <Button type="submit">Entrar na sala</Button>
+            <Button type='submit'>Entrar na sala</Button>
           </form>
         </div>
       </main>
     </div>
-  );
+  )
 }
