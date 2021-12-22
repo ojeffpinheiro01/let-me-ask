@@ -1,11 +1,27 @@
-import illustrationImg from "../assets/img/illustration.svg";
-import logoImg from "../assets/img/logo.svg";
-import googleIconImg from "../assets/img/google-icon.svg";
+import { useHistory } from "react-router";
+
+import { auth, firebase } from '../services/firebase'
 
 import '../styles/auth.scss';
 import { Button } from "../components/Button";
 
+import illustrationImg from "../assets/img/illustration.svg";
+import logoImg from "../assets/img/logo.svg";
+import googleIconImg from "../assets/img/google-icon.svg";
+
 export function Home() {
+  const history = useHistory();
+
+  function handleCreateNewRoom(){
+    const provider = new firebase.auth.GoogleAuthProvider()
+
+    auth.signInWithPopup(provider).then(res => {
+      console.log(res)
+    })
+
+    history.push('/rooms/new')
+  }
+
   return (
     <div id='page-auth' >
       <aside>
@@ -20,7 +36,7 @@ export function Home() {
       <main>
         <div className='main-content'>
           <img src={logoImg} alt="LetMeAsk" />
-          <button className="create-room">
+          <button onClick={handleCreateNewRoom} className="create-room">
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </button>

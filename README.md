@@ -1,4 +1,4 @@
-<img alt="AmazonJeff" title="JeffDeliver" align="center" src="./assets/logo.svg">
+<img alt='AmazonJeff' title='JeffDeliver' align='center' src='./assets/logo.svg'>
 
 ## Menu
 
@@ -23,7 +23,7 @@
 # :book: Sobre o projeto
 Essa aplicação é um recurso para agrupar as perguntas mais frequentes feitas por usuários feitas a hosts de lives/reuniões/eventos 
 Esse projeto foi desenvolvido durante a 6ª edição [Next Level Week - Mission: ReactJS](https://app.rocketseat.com.br/nlw-together/tracks) - oferecido por [Rocketseat](https://www.rocketseat.com.br)<br />
-<h4 align="center"> :construction: In development :construction:</h4>
+<h4 align='center'> :construction: In development :construction:</h4>
 O mesmo é um dashboard das vendas de uma loja
 
 ---
@@ -47,18 +47,18 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 # :eyes: Preview
 ## Visualização do adm
 <div>
-   <img src="./assets/adm-pg-inicial.png" width="500px">
-   <img src="./assets/adm-nova-sala.png" width="500px">
-   <img src="./assets/adm-encerrar-sala.png" width="500px">
-   <img src="./assets/adm-empty-state.png" width="500px">
-   <img src="./assets/adm-perguntas.png" width="500px">
+   <img src='./assets/adm-pg-inicial.png' width='500px'>
+   <img src='./assets/adm-nova-sala.png' width='500px'>
+   <img src='./assets/adm-encerrar-sala.png' width='500px'>
+   <img src='./assets/adm-empty-state.png' width='500px'>
+   <img src='./assets/adm-perguntas.png' width='500px'>
 </div>
 
 ## Visualização do parcipante
 <div>
-   <img src="./assets/user-pg-inicial.png" width="500px">
-   <img src="./assets/user-empty-state.png" width="400px">
-   <img src="./assets/user-perguntas.png" width="400px">
+   <img src='./assets/user-pg-inicial.png' width='500px'>
+   <img src='./assets/user-empty-state.png' width='500px'>
+   <img src='./assets/user-perguntas.png' width='500px'>
 </div>
 
 
@@ -118,13 +118,13 @@ $ yarn start
 ---
 
 # Siga-me 
-<p align="center">
-<a href="https://dev.to/ojeffoinheiro" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg" alt="ojeffoinheiro" height="30" width="40" /></a>
-<a href="https://codepen.io/ojeffoinheiro" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/codepen.svg" alt="maykbrito" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/jeferson-pinheiro" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg" alt="maykbrito" height="30" width="40" /></a>
-<a href="https://stackoverflow.com/ojeffpinheiro" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/stackoverflow.svg" alt="maykbrito" height="30" width="40" /></a>
-<a href="https://codesandbox.io/u/ojeffoinheiro" target="blank"><img align="center" src="https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/codesandbox.svg" alt="maykbrito" height="30" width="40" /></a>
-<a href="https://app.rocketseat.com.br/me/jeferson-pinheiro-de-souza-1580117763" target="blank"><img align="center" src="https://image.flaticon.com/icons/svg/1356/1356604.svg" alt="ojeffoinheiro" height="30" width="40" /></a>
+<p align='center'>
+<a href='https://dev.to/ojeffoinheiro' target='blank'><img align='center' src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/dev-dot-to.svg' alt='ojeffoinheiro' height='30' width='40' /></a>
+<a href='https://codepen.io/ojeffoinheiro' target='blank'><img align='center' src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/codepen.svg' alt='maykbrito' height='30' width='40' /></a>
+<a href='https://linkedin.com/in/jeferson-pinheiro' target='blank'><img align='center' src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/linkedin.svg' alt='maykbrito' height='30' width='40' /></a>
+<a href='https://stackoverflow.com/ojeffpinheiro' target='blank'><img align='center' src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/stackoverflow.svg' alt='maykbrito' height='30' width='40' /></a>
+<a href='https://codesandbox.io/u/ojeffoinheiro' target='blank'><img align='center' src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/codesandbox.svg' alt='maykbrito' height='30' width='40' /></a>
+<a href='https://app.rocketseat.com.br/me/jeferson-pinheiro-de-souza-1580117763' target='blank'><img align='center' src='https://image.flaticon.com/icons/svg/1356/1356604.svg' alt='ojeffoinheiro' height='30' width='40' /></a>
 </p>
 
 ---
