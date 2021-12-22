@@ -8,8 +8,12 @@ import { Button } from "../components/Button";
 import illustrationImg from "../assets/img/illustration.svg";
 import logoImg from "../assets/img/logo.svg";
 import googleIconImg from "../assets/img/google-icon.svg";
+import { useContext } from "react";
+import { AppContext } from "../App";
 
 export function Home() {
+  const { value, setValue} = useContext(AppContext)
+
   const history = useHistory();
 
   function handleCreateNewRoom(){
@@ -36,6 +40,7 @@ export function Home() {
       <main>
         <div className='main-content'>
           <img src={logoImg} alt="LetMeAsk" />
+          <h1>{value}</h1>
           <button onClick={handleCreateNewRoom} className="create-room">
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google

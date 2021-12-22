@@ -1,5 +1,6 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { AppContext } from '../App';
 
 import illustrationImg from '../assets/img/illustration.svg'
 import logoImg from '../assets/img/logo.svg';
@@ -9,6 +10,7 @@ import { Button } from '../components/Button';
 import '../styles/auth.scss';
 
 export function NewRoom() {
+  const { value, setValue} = useContext(AppContext)
   const [newRoom, setNewRoom] = useState('');
 
   return (
@@ -21,6 +23,7 @@ export function NewRoom() {
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
+          <h1>{value}</h1>
           <h2>Criar uma nova sala</h2>
           <form>
             <input 
