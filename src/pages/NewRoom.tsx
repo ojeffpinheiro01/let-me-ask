@@ -32,9 +32,6 @@ export function NewRoom() {
     })
 
     history.push(`/rooms/${firebaseRoom.key}`)
-
-    async function handleJoinRoom(e: FormEvent){}
-
   }
 
   return (
