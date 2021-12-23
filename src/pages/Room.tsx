@@ -1,50 +1,31 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useAuth } from '../hooks/useAuth'
+import { useRoom } from '../hooks/useRoom'
+
 import { database } from '../services/firebase'
 
 import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
+import { Question } from '../components/Question'
 
 import logo from '../assets/img/logo.svg'
 
 import '../styles/room.scss'
-import { Question } from '../components/Question'
 
 type RoomParams = {
   id: string;
 }
 
-type FirebaseQuestions = Record<string, {
-  author: {
-    username: string;
-    avatar: string;
-  }
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}>
-
-type QuestionType = {
-  id: string;
-  author: {
-    username: string;
-    avatar: string;
-  }
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}
-
 export function Room() {
-  const { user } = useAuth()
   const params = useParams<RoomParams>()
-  const [newQuestion, setNewQuestion] = useState('')
-  const [questions, setQuestions] = useState<QuestionType[]>([])
-  const [title, setTitle] = useState('')
-
   const roomID = params.id
+
+  const { user } = useAuth()
+  const { questions, title } = useRoom(roomID)
+  
+  const [newQuestion, setNewQuestion] = useState('')
 
   async function handleSendNewQuestion(e: FormEvent) {
     e.preventDefault()
@@ -70,28 +51,6 @@ export function Room() {
     await database.ref(`rooms/${roomID}/questions`).push(question)
     setNewQuestion('')
   }
-
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomID}`)
-
-    roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
-
-      const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighlighted: value.isHighlighted,
-          isAnswered: value.isAnswered,
-        }
-      })
-
-      setQuestions(parsedQuestions)
-      setTitle(databaseRoom.title)
-    })
-  }, [roomID]);
 
   return (
     <div id='page-room'>
