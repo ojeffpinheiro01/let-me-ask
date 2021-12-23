@@ -10,6 +10,7 @@ import { RoomCode } from '../components/RoomCode'
 import logo from '../assets/img/logo.svg'
 
 import '../styles/room.scss'
+import { Question } from '../components/Question'
 
 type RoomParams = {
   id: string;
@@ -17,7 +18,7 @@ type RoomParams = {
 
 type FirebaseQuestions = Record<string, {
   author: {
-    name: string;
+    username: string;
     avatar: string;
   }
   content: string;
@@ -25,10 +26,10 @@ type FirebaseQuestions = Record<string, {
   isHighlighted: boolean;
 }>
 
-type Question = {
+type QuestionType = {
   id: string;
   author: {
-    name: string;
+    username: string;
     avatar: string;
   }
   content: string;
@@ -40,7 +41,7 @@ export function Room() {
   const { user } = useAuth()
   const params = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
-  const [questions, setQuestions] = useState<Question[]>([])
+  const [questions, setQuestions] = useState<QuestionType[]>([])
   const [title, setTitle] = useState('')
 
   const roomID = params.id
@@ -103,7 +104,7 @@ export function Room() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)  </span> }
+          {questions.length > 0 && <span>{questions.length} pergunta(s)  </span>}
         </div>
         <form onSubmit={handleSendNewQuestion}>
           <textarea placeholder='O que você quer perguntar?'
@@ -122,7 +123,15 @@ export function Room() {
             <Button type='submit' disabled={!user}>ENVIAR PERGUNTA</Button>
           </div>
         </form>
-        {JSON.stringify(questions)}
+        <div className="question-list">
+          {questions.map(q => {
+            return (
+              <Question key={q.id}
+                content={q.content} author={q.author} />
+            )
+          })}
+        </div>
+
       </main>
     </div>
   )
