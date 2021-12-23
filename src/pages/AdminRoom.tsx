@@ -4,12 +4,12 @@ import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 
 import { useRoom } from '../hooks/useRoom';
-// import { database } from '../services/firebase';
+import { database } from '../services/firebase';
 
 import { Button } from '../components/Button';
 
 import logoImg from '../assets/img/logo.svg';
-// import deleteImg from '../assets/img/delete.svg';
+import deleteImg from '../assets/img/delete.svg';
 
 import '../styles/room.scss';
 
@@ -18,11 +18,17 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
-  // const history = useHistory()
+  const history = useHistory()
   const params = useParams<RoomParams>();
-  const roomId = params.id;
+  const roomID = params.id;
 
-  const { title, questions } = useRoom(roomId)
+  const { title, questions } = useRoom(roomID)
+
+  async function handleDeleteQuestion(questionID: string){
+    if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')){
+      await database.ref(`rooms/${roomID}/questions/${questionID}`).remove()
+    }
+  }
 
   return (
     <div id="page-room">
@@ -30,7 +36,7 @@ export function AdminRoom() {
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
           <div>
-            <RoomCode code={roomId} />
+            <RoomCode code={roomID} />
             <Button isOutlined >Encerrar sala</Button>
           </div>
         </div>
@@ -43,13 +49,13 @@ export function AdminRoom() {
         </div>
 
         <div className="question-list">
-          {questions.map(question => {
+          {questions.map(q => {
             return (
               <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}>
-                  
+                key={q.id}
+                content={q.content}
+                author={q.author}>
+                  <button type='button' onClick={() =>  handleDeleteQuestion(q.id) } ><img src={deleteImg} alt="Remover pergunta" /></button>
                 </Question>
             );
           })}
